@@ -1,18 +1,35 @@
 import React, { useState } from "react";
 import Context from "../GlobalState/Context.js"
+import axios from "axios"
+import { BASE_URL, API_KEY } from "../Constants/url"
 
 
 
-const Provider = (props) => {    
+const Provider = (props) => {
 
-    const [teste,setTeste] = useState("oie")
+    const [cities, setCities] = useState([])
+    const [cityDetail, setCityDetail] = useState([])
+
+    const getWeatherInfo = async () => {
+
+        await axios.get(BASE_URL + "&APPID=" + API_KEY)
+            .then((res) => {
+                console.log(res)
+                setCities(res.data.list)
+
+            }).catch((err) => {
+                console.log(err)
+            })       
+    }
+
+        
     
 
-    
 
-    const states = { teste }
-    const setters = {  }
-    const requests = {  }
+
+    const states = { cities, cityDetail }
+    const setters = {setCityDetail}
+    const requests = { getWeatherInfo }
 
     const data = { states, setters, requests };
 
