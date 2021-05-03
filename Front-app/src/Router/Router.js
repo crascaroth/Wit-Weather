@@ -1,8 +1,8 @@
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
 import MainPage from '../Pages/MainPage/MainPage'
 import DetailPage from '../Pages/DetailPage/DetailPage'
-import {MonitorSize} from '../Components/MonitorSize/MonitorSize'
+import Header from "../Components/Header/Header"
+import { MonitorSize } from '../Components/MonitorSize/MonitorSize'
 
 export default function Router() {
 
@@ -12,18 +12,16 @@ export default function Router() {
             <Switch>
                 <Route exact path="/">
                     <MonitorSize>
+                        <Header />
                         <MainPage />
                     </MonitorSize>
                 </Route>
 
                 <Route exact path="/details/:id">
                     <MonitorSize>
-                        <DetailPage/>
+                        <Header />
+                        <DetailPage />
                     </MonitorSize>
-
-                </Route>
-
-                <Route exact path="/2">
 
                 </Route>
 
