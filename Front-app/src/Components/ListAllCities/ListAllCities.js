@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import Context from '../../GlobalState/Context'
 import {goToPage} from "../../Router/Walker"
+import {CityBox, Container} from "./ListAllCities_styled"
 
 export const ListAllCities = () => {
 
@@ -11,20 +12,22 @@ export const ListAllCities = () => {
 
 
     return (
-        <>
+        <Container>
             {states.cities.map((city => {
 
                 return (
-                    <div onClick={ () => {
+                    <CityBox onClick={ () => {
                         setters.setCityDetail(city)
                         goToPage(history,`/details/${city.id}`)
                     }}>
-                        {city.name}
-                    </div>
+                        <span>{city.name}</span><span>, </span><span>{city.sys.country}</span>
+                        
+                        
+                    </CityBox>
                 )
 
             }))}
-        </>
+        </Container>
     )
 }
 
